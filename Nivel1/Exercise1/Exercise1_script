@@ -1,0 +1,90 @@
+db.createCollection("client", {
+  validator: {
+    $jsonSchema: {
+      "bsonType": "object",
+      "title": "client",
+      "required": ["name", "address", "phone", "email", "register_date"],
+      "properties": {
+        "name": {
+          "bsonType": "string"
+        },
+        "address": {
+          "bsonType": "string"
+        },
+        "phone": {
+          "bsonType": "string"
+        },
+        "email": {
+          "bsonType": "string"
+        },
+        "register_date": {
+          "bsonType": "timestamp"
+        },
+        "recommender_client_id": {
+          "bsonType": "objectId"
+        },
+        "shoppings": {
+          "bsonType": "array",
+          "items": {
+            "title": "object",
+            "required": ["seller", "date", "glasses"],
+            "properties": {
+              "seller": {
+                "bsonType": "string"
+              },
+              "date": {
+                "bsonType": "date"
+              },
+              "glasses": {
+                "bsonType": "object",
+                "title": "object",
+                "required": ["graduation", "color_glass", "montura", "color", "price"],
+                "properties": {
+                  "brand": {
+                    "bsonType": "string"
+                  },
+                  "graduation": {
+                    "bsonType": "object",
+                    "title": "object",
+                    "required": ["graduation_L", "graduation_R"],
+                    "properties": {
+                      "graduation_L": {
+                        "bsonType": "decimal"
+                      },
+                      "graduation_R": {
+                        "bsonType": "decimal"
+                      }
+                    }
+                  },
+                  "color_glass": {
+                    "bsonType": "object",
+                    "title": "object",
+                    "required": ["color_L", "color_R"],
+                    "properties": {
+                      "color_L": {
+                        "bsonType": "string"
+                      },
+                      "color_R": {
+                        "bsonType": "string"
+                      }
+                    }
+                  },
+                  "montura": {
+                    "enum": ['Flotant', 'Pasta', 'Metal']
+                  },
+                  "color": {
+                    "bsonType": "string"
+                  },
+                  "price": {
+                    "bsonType": "double"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+Generated: 06 / 11 / 2024 | 18: 09: 26 by Moon Modeler - www.datensen.com

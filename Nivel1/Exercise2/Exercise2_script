@@ -1,0 +1,95 @@
+db.createCollection("glasses", {
+  validator: {
+    $jsonSchema: {
+      "bsonType": "object",
+      "title": "glasses",
+      "required": ["brand", "montura", "price", "provider"],
+      "properties": {
+        "brand": {
+          "bsonType": "string"
+        },
+        "montura": {
+          "enum": ['Flotant', 'Pasta', 'Metal']
+        },
+        "price": {
+          "bsonType": "double"
+        },
+        "bought_by": {
+          "bsonType": "array",
+          "items": {
+            "title": "object",
+            "required": ["name", "address", "phone", "email", "register_date"],
+            "properties": {
+              "name": {
+                "bsonType": "string"
+              },
+              "address": {
+                "bsonType": "string"
+              },
+              "phone": {
+                "bsonType": "string"
+              },
+              "email": {
+                "bsonType": "string"
+              },
+              "register_date": {
+                "bsonType": "timestamp"
+              },
+              "recommender_client_id": {
+                "bsonType": "objectId"
+              }
+            }
+          }
+        },
+        "provider": {
+          "bsonType": "object",
+          "title": "object",
+          "required": ["name", "address", "phone", "fax", "NIF"],
+          "properties": {
+            "name": {
+              "bsonType": "string"
+            },
+            "address": {
+              "bsonType": "object",
+              "title": "object",
+              "required": ["street", "number", "floor", "city", "postal_code", "country"],
+              "properties": {
+                "street": {
+                  "bsonType": "string"
+                },
+                "number": {
+                  "bsonType": "int"
+                },
+                "floor": {
+                  "bsonType": "int"
+                },
+                "door": {
+                  "bsonType": "int"
+                },
+                "city": {
+                  "bsonType": "string"
+                },
+                "postal_code": {
+                  "bsonType": "string"
+                },
+                "country": {
+                  "bsonType": "string"
+                }
+              }
+            },
+            "phone": {
+              "bsonType": "string"
+            },
+            "fax": {
+              "bsonType": "string"
+            },
+            "NIF": {
+              "bsonType": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+});
+Generated: 06 / 11 / 2024 | 18: 10: 05 by Moon Modeler - www.datensen.com

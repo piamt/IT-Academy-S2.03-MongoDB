@@ -1,0 +1,160 @@
+db.createCollection("order", {
+  validator: {
+    $jsonSchema: {
+      "bsonType": "object",
+      "title": "order",
+      "required": ["created", "client", "store", "delivery_method", "products", "total_price", "burger_number", "drinks_number", "pizza_number", "delivered", "paid"],
+      "properties": {
+        "created": {
+          "bsonType": "date"
+        },
+        "client": {
+          "bsonType": "object",
+          "title": "object",
+          "required": ["name", "surname", "address", "postal_code", "town", "province", "country", "phone"],
+          "properties": {
+            "name": {
+              "bsonType": "string"
+            },
+            "surname": {
+              "bsonType": "string"
+            },
+            "address": {
+              "bsonType": "string"
+            },
+            "postal_code": {
+              "bsonType": "string"
+            },
+            "town": {
+              "bsonType": "string"
+            },
+            "province": {
+              "bsonType": "string"
+            },
+            "country": {
+              "bsonType": "string"
+            },
+            "phone": {
+              "bsonType": "string"
+            }
+          }
+        },
+        "store": {
+          "bsonType": "object",
+          "title": "object",
+          "required": ["employees", "address", "postal_code", "town", "province"],
+          "properties": {
+            "employees": {
+              "bsonType": "array",
+              "items": {
+                "title": "object",
+                "required": ["name", "surname", "NIF", "phone", "role"],
+                "properties": {
+                  "name": {
+                    "bsonType": "string"
+                  },
+                  "surname": {
+                    "bsonType": "string"
+                  },
+                  "NIF": {
+                    "bsonType": "string"
+                  },
+                  "phone": {
+                    "bsonType": "string"
+                  },
+                  "role": {
+                    "enum": ['kitchen', 'delivery']
+                  }
+                }
+              }
+            },
+            "address": {
+              "bsonType": "string"
+            },
+            "postal_code": {
+              "bsonType": "string"
+            },
+            "town": {
+              "bsonType": "string"
+            },
+            "province": {
+              "bsonType": "string"
+            }
+          }
+        },
+        "delivery_method": {
+          "enum": ['home', 'store']
+        },
+        "products": {
+          "bsonType": "array",
+          "items": {
+            "title": "object",
+            "required": ["type", "name", "description", "image", "price"],
+            "properties": {
+              "type": {
+                "enum": ['Pizza', 'Burger', 'Drink']
+              },
+              "name": {
+                "bsonType": "string"
+              },
+              "description": {
+                "bsonType": "string"
+              },
+              "image": {
+                "bsonType": "string"
+              },
+              "price": {
+                "bsonType": "decimal"
+              },
+              "category": {
+                "bsonType": "object",
+                "title": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": {
+                    "bsonType": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "total_price": {
+          "bsonType": "decimal"
+        },
+        "burger_number": {
+          "bsonType": "int"
+        },
+        "drinks_number": {
+          "bsonType": "int"
+        },
+        "pizza_number": {
+          "bsonType": "int"
+        },
+        "additional_note": {
+          "bsonType": "string"
+        },
+        "delivered": {
+          "bsonType": "bool"
+        },
+        "paid": {
+          "bsonType": "bool"
+        },
+        "delivery_home_info": {
+          "bsonType": "object",
+          "title": "object",
+          "required": ["deliverer_id", "delivery_date"],
+          "properties": {
+            "deliverer_id": {
+              "bsonType": "objectId"
+            },
+            "delivery_date": {
+              "bsonType": "date"
+            }
+          }
+        }
+      }
+    }
+  }
+});
+Generated: 10 / 11 / 2024 | 19: 38: 15 by Moon Modeler - www.datensen.com
