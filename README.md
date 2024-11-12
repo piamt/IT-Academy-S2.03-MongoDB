@@ -39,7 +39,7 @@ I si el punt de vista fos de la interfície fossin les ulleres?
 ![image info](./pictures/ex2-optica.jpg)
 
 
-## Nivell 2: 
+## Nivell 2: Pizzeria
 
 ### Exercici:
 T’han contractat per a dissenyar una web que permeti fer comandes de menjar a domicili per Internet.
